@@ -311,13 +311,12 @@
             "autoUpgradeMinorVersion": true,
             "settings": {
               "fileUris": [
-                "https://raw.githubusercontent.com/brogersyh/Dockerfiles-for-windows/master/AddHttpFirewallException.ps1",
-                "https://raw.githubusercontent.com/StefanScherer/docker-windows-azure/master/containerConfig.ps1",
+                "https://github.com/brogersyh/Dockerfiles-for-windows/blob/master/dotnet-aspnet46-webapp/containerConfig.ps1",
                 "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/ConfigureWinRM.ps1",
                 "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe",
                 "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/winrmconf.cmd"
               ],
-              "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file containerConfig.ps1 ',variables('hostDNSNameScriptArgument'))] && powershell -ExecutionPolicy Unrestricted -file AddHttpFirewallException.ps1"
+              "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file containerConfig.ps1 ',variables('hostDNSNameScriptArgument'))]"
             }
           }
         }
