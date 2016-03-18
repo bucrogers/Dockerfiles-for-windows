@@ -6,6 +6,8 @@
   
 FROM microsoft/iis
 
+ENV RushHourWeatherAppServiceUrl http://localhost:5000
+
 # use chocolatey pkg mgr to facilitate downloading jdk without prompting
 #install ASP.NET 4.6 (though it says "net45" it is ASP.NET 4.6)
 #install tools and targets to allow build (via msbuild) without VS installed
