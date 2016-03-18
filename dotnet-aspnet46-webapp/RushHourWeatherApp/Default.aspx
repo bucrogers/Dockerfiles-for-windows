@@ -8,6 +8,7 @@
         <asp:Label ID="Label1" runat="server" Text="City"></asp:Label>
         <asp:TextBox ID="cityCtl" runat="server">Chicago</asp:TextBox>
         <asp:Button ID="ctrlRefresh" runat="server" Text="Refresh" OnClick="ctrlRefresh_Click" />
+        <asp:Label ID="errorCtl" runat="server" ForeColor="Red" Text="ErrorText"></asp:Label>
     </div>
 
         <div class="jumbotron">
