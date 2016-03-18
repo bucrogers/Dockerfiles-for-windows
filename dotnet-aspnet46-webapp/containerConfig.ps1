@@ -73,6 +73,9 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 choco install -y docker-machine -version 0.6.0
 choco install -y docker-compose -version 1.6.0
 
+# install git
+choco install -y git
+
 .\ConfigureWinRM.ps1 $HostName
 
 # OpenSSH server needs a restart for ssh key based logins

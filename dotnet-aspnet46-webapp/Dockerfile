@@ -8,10 +8,11 @@ FROM microsoft/iis
 
 ENV RushHourWeatherAppServiceUrl http://localhost:5000
 
-# use chocolatey pkg mgr to facilitate downloading jdk without prompting
+# use chocolatey pkg mgr to facilitate installs
+RUN @powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+
 #install ASP.NET 4.6 (though it says "net45" it is ASP.NET 4.6)
 #install tools and targets to allow build (via msbuild) without VS installed
-RUN @powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 RUN powershell add-windowsfeature web-asp-net45 \
   && choco install microsoft-build-tools -y \
   && choco install dotnet4.6-targetpack -y \
