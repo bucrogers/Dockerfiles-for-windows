@@ -1,7 +1,7 @@
 # Dockerfiles-for-windows
 
 * sqlexpress: SQL Server 2014 Express
-* dotnet-aspnet46-webapp: ASP.NET 4.6 Web UI app, running under IIS 0- build using msbuild
+* dotnet-aspnet46-webapp: ASP.NET 4.6 Web UI app, running under IIS - build using msbuild
 * swarm-windows: Docker Swarm
 * postgresql: PostgreSQL 9.5
 * ruby-sinatra-helloworld: simple "hello world" ruby sinatra web app
