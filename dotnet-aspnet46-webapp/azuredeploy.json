@@ -155,6 +155,34 @@
               "priority": 500,
               "direction": "Inbound"
             }
+          },
+          {
+            "name": "Swarm-master",
+            "properties": {
+              "description": "Swarm-master",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "2376",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 600,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Docker-registry",
+            "properties": {
+              "description": "Docker-registry",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "5000",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 700,
+              "direction": "Inbound"
+            }
           }
         ]
       }

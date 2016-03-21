@@ -30,8 +30,8 @@ namespace WebAppForm
 
         static async Task UpdateFromService(_Default pageContext)
         {
-            var serviceUrl = Environment.GetEnvironmentVariable("RushHourWeatherAppServiceUrl");
-            if (serviceUrl == null || serviceUrl == string.Empty) { serviceUrl = "http://localhost:5000"; }
+
+            var serviceUrl = Properties.Settings.Default.WeatherServiceUrl;
             try
             {
                 using (var client = new HttpClient())

@@ -6,7 +6,7 @@
   
 FROM microsoft/iis
 
-ENV RushHourWeatherAppServiceUrl http://localhost:5000
+ENV WeatherServiceUrl http://localhost:5000
 
 # use chocolatey pkg mgr to facilitate installs
 RUN @powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
@@ -32,5 +32,6 @@ RUN nuget restore -PackagesDirectory ..\packages \
   && powershell /inetpub/wwwroot/RushHourWeatherApp/Run-MsBuild \
   && powershell /inetpub/wwwroot/RushHourWeatherApp/Create-WebApplication -name "RushHourWeatherApp" -physicalPath "c:\inetpub\wwwroot\RushHourWeatherApp\RushHourWeatherApp"
 
-#Default entrypoint: idle powershell prompt (use CMD instead of ENTRYPOINT for increased flexibility)
-CMD powershell
+#Entrypoint works for either detached or interactive mode
+#Set ASP.NET config param from environment var WeatherServiceUrl
+ENTRYPOINT powershell ..\SetConfigFromEnvVarAndRun
