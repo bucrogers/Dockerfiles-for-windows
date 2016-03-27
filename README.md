@@ -1,7 +1,7 @@
 # Dockerfiles-for-windows
 
 * sqlexpress: SQL Server 2014 Express
-* dotnet-aspnet46-webapp: ASP.NET 4.6 Web UI app, running under IIS - build using msbuild
+* dotnet-aspnet46-webapp: ASP.NET 4.6 Web UI app, running under IIS - built in the Dockerfile using msbuild
 * swarm-windows: Docker Swarm
 * postgresql: PostgreSQL 9.5
 * ruby-sinatra-helloworld: simple "hello world" ruby sinatra web app
@@ -18,8 +18,9 @@ Each of the above is entirely self-contained - all you need is what's in the doc
   * docker run -d -p 5432:5432 postgresql
   * test using a client such as pgAdmin III, psql or the "DB Navigator" plugin for Jetbrains IDEs IntelliJ IDEA and others - login as user 'postgres', empty password
 * docker build -t ruby-sinatra-helloworld ./ruby-sinatra-helloworld
-  * docker run -d -p 4567:4567
+  * docker run -d -p 4567:4567 ruby-sinatra-helloworld
 * docker build -t jdk8 ./jdk8
+  * (intended as a base image for app requiring jdk to build)
 
 Please see my blog post [Dockerfile to create SQL Server Express windows container image](http://26thcentury.com/2016/01/03/dockerfile-to-create-sql-server-express-windows-container-image/) for a detailed description of the SQL Server dockerfile
 
