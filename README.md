@@ -11,7 +11,7 @@ Each of the above is entirely self-contained - all you need is what's in the doc
 * docker build -t sqlexpress ./sqlexpress
   * docker run -d -p 1433:1433 sqlexpress
 * docker build -t dotnet-aspnet46-webapp ./dotnet-aspnet46-webapp
-  * docker run -d -p 80:80 dotnet-aspnet46-webapp
+  * docker run -d -e WeatherServiceUrl=YourPythonWeatherServiceUrl -p 80:80 dotnet-aspnet46-webapp
 * docker build -t swarm ./swarm-windows
   * docker run --rm swarm create
 * docker build -t postgresql ./postgresql
