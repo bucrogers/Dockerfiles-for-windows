@@ -13,22 +13,40 @@ namespace WebAppForm {
     public partial class _Default {
         
         /// <summary>
-        /// Label1 control.
+        /// errorCtl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label errorCtl;
         
         /// <summary>
-        /// cityCtl control.
+        /// Table0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cityCtl;
+        protected global::System.Web.UI.WebControls.Table Table0;
+        
+        /// <summary>
+        /// tempStationCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tempStationCtl;
+        
+        /// <summary>
+        /// tempStationLocCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label tempStationLocCtl;
         
         /// <summary>
         /// ctrlRefresh control.
@@ -40,66 +58,435 @@ namespace WebAppForm {
         protected global::System.Web.UI.WebControls.Button ctrlRefresh;
         
         /// <summary>
-        /// errorCtl control.
+        /// windStationCtl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorCtl;
+        protected global::System.Web.UI.WebControls.TextBox windStationCtl;
         
         /// <summary>
-        /// amTempCtl control.
+        /// windStationLocCtl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label amTempCtl;
+        protected global::System.Web.UI.WebControls.Label windStationLocCtl;
         
         /// <summary>
-        /// amWindCtl control.
+        /// asOfCtl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label amWindCtl;
+        protected global::System.Web.UI.WebControls.Label asOfCtl;
         
         /// <summary>
-        /// amPrecipCtl control.
+        /// Table1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label amPrecipCtl;
+        protected global::System.Web.UI.WebControls.Table Table1;
         
         /// <summary>
-        /// pmTempCtl control.
+        /// toMidpointCtl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pmTempCtl;
+        protected global::System.Web.UI.WebControls.TextBox toMidpointCtl;
         
         /// <summary>
-        /// pmWindCtl control.
+        /// fromMidpointCtl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pmWindCtl;
+        protected global::System.Web.UI.WebControls.TextBox fromMidpointCtl;
         
         /// <summary>
-        /// pmPrecipCtl control.
+        /// Table3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pmPrecipCtl;
+        protected global::System.Web.UI.WebControls.Table Table3;
+        
+        /// <summary>
+        /// beforeToTempCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeToTempCtl;
+        
+        /// <summary>
+        /// toTempCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toTempCtl;
+        
+        /// <summary>
+        /// beforeFromTempCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeFromTempCtl;
+        
+        /// <summary>
+        /// fromTempCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fromTempCtl;
+        
+        /// <summary>
+        /// beforeToWindCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeToWindCtl;
+        
+        /// <summary>
+        /// toWindCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toWindCtl;
+        
+        /// <summary>
+        /// beforeFromWindCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeFromWindCtl;
+        
+        /// <summary>
+        /// fromWindCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fromWindCtl;
+        
+        /// <summary>
+        /// beforeToCondCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeToCondCtl;
+        
+        /// <summary>
+        /// toCondCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toCondCtl;
+        
+        /// <summary>
+        /// beforeFromCondCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeFromCondCtl;
+        
+        /// <summary>
+        /// fromCondCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fromCondCtl;
+        
+        /// <summary>
+        /// beforeToPrecipRateCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeToPrecipRateCtl;
+        
+        /// <summary>
+        /// toPrecipRateCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toPrecipRateCtl;
+        
+        /// <summary>
+        /// beforeFromPrecipRateCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeFromPrecipRateCtl;
+        
+        /// <summary>
+        /// fromPrecipRateCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fromPrecipRateCtl;
+        
+        /// <summary>
+        /// beforeToHumCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeToHumCtl;
+        
+        /// <summary>
+        /// toHumCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toHumCtl;
+        
+        /// <summary>
+        /// beforeFromHumCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeFromHumCtl;
+        
+        /// <summary>
+        /// fromHumCtl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fromHumCtl;
+        
+        /// <summary>
+        /// Table2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table Table2;
+        
+        /// <summary>
+        /// beforeToTemp2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeToTemp2Ctl;
+        
+        /// <summary>
+        /// toTemp2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toTemp2Ctl;
+        
+        /// <summary>
+        /// beforeFromTemp2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeFromTemp2Ctl;
+        
+        /// <summary>
+        /// fromTemp2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fromTemp2Ctl;
+        
+        /// <summary>
+        /// beforeToWind2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeToWind2Ctl;
+        
+        /// <summary>
+        /// toWind2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toWind2Ctl;
+        
+        /// <summary>
+        /// beforeFromWind2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeFromWind2Ctl;
+        
+        /// <summary>
+        /// fromWind2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fromWind2Ctl;
+        
+        /// <summary>
+        /// beforeToCond2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeToCond2Ctl;
+        
+        /// <summary>
+        /// toCond2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toCond2Ctl;
+        
+        /// <summary>
+        /// beforeFromCond2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeFromCond2Ctl;
+        
+        /// <summary>
+        /// fromCond2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fromCond2Ctl;
+        
+        /// <summary>
+        /// beforeToPrecipRate2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeToPrecipRate2Ctl;
+        
+        /// <summary>
+        /// toPrecipRate2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toPrecipRate2Ctl;
+        
+        /// <summary>
+        /// beforeFromPrecipRate2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeFromPrecipRate2Ctl;
+        
+        /// <summary>
+        /// fromPrecipRate2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fromPrecipRate2Ctl;
+        
+        /// <summary>
+        /// beforeToHum2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeToHum2Ctl;
+        
+        /// <summary>
+        /// toHum2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toHum2Ctl;
+        
+        /// <summary>
+        /// beforeFromHum2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label beforeFromHum2Ctl;
+        
+        /// <summary>
+        /// fromHum2Ctl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fromHum2Ctl;
     }
 }
