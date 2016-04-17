@@ -19,6 +19,9 @@ RUN powershell add-windowsfeature web-asp-net45 \
   && choco install nuget.commandline -y \
   && nuget install MSBuild.Microsoft.VisualStudio.Web.targets
 
+#Secure default root IIS access by removing default page
+RUN powershell remove-item \inetpub\wwwroot\iisstart.*
+
 #copy web app source and utility script(s) to image
 COPY . /inetpub/wwwroot/RushHourWeatherApp
 

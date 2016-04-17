@@ -1,7 +1,9 @@
 # Dockerfiles-for-windows
 
 * sqlexpress: SQL Server 2014 Express
-* dotnet-aspnet46-webapp: ASP.NET 4.6 Web UI app, running under IIS - built in the Dockerfile using msbuild
+* dotnet-aspnet46-webapp: ASP.NET 4.6 Web UI app (Bike Commuter Weather app), running under IIS - built in the Dockerfile using msbuild
+  * There is a docker-compose.yml file in dotnet-aspnet46-webapp, to run both ui and service locally - however, docker-compose network mode functionality is limited as of TP4: The app will be accessible from outside only if run via docker run, not docker-compose
+* python-rest-service: Python REST web service consumed by the above (Linux Dockerfile also available at [Dockerfiles for Linux](https://github.com/brogersyh/Dockerfiles-for-Linux)
 * swarm-windows: Docker Swarm
 * postgresql: PostgreSQL 9.5
 * ruby-sinatra-helloworld: simple "hello world" ruby sinatra web app
@@ -10,8 +12,10 @@
 Each of the above is entirely self-contained - all you need is what's in the dockerfile folder:
 * docker build -t sqlexpress ./sqlexpress
   * docker run -d -p 1433:1433 sqlexpress
-* docker build -t dotnet-aspnet46-webapp ./dotnet-aspnet46-webapp
-  * docker run -d -e WeatherServiceUrl=YourPythonWeatherServiceUrl -p 80:80 dotnet-aspnet46-webapp
+* docker build -t bcwui ./dotnet-aspnet46-webapp
+  * docker run -d -e WeatherServiceUrl=http://localhost:5000 -p 80:80 bcwui
+* docker build -t bcwservice ./python-rest-service
+  * docker run -d -e WUNDERGROUND_API_KEY=YourWundergroundApiKey -p 5000:5000 bcwservice
 * docker build -t swarm ./swarm-windows
   * docker run --rm swarm create
 * docker build -t postgresql ./postgresql

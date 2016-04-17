@@ -6,10 +6,6 @@
         <h1>
         <asp:Label ID="errorCtl" runat="server" ForeColor="Red" Text="ErrorText"></asp:Label>
         </h1>
-
-        <h2><i>Configuration</i></h2>
-
-        <br />
         <asp:Table ID="Table0" width="100%" runat="server">
                 <asp:TableHeaderRow>
                     <asp:TableHeaderCell Width="20%"></asp:TableHeaderCell>
@@ -33,7 +29,6 @@
                     <asp:TableCell Width="20%"><asp:Label ID="asOfCtl" runat="server" Text="as of Mar 27, 3pm"></asp:Label></asp:TableCell>
                </asp:TableRow>
         </asp:Table>
-        <br />
 
             <asp:Table ID="Table1" width="100%" runat="server">
                 <asp:TableHeaderRow>
@@ -58,7 +53,6 @@
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
-        <br />
     </div>
 
         <div class="jumbotron">
