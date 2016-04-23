@@ -21,6 +21,9 @@ namespace WebAppForm
         {
             errorCtl.Text = string.Empty;
 
+            tempStationCtl.Text = Properties.Settings.Default.tempStation;
+            windStationCtl.Text = Properties.Settings.Default.windStation;
+
             UpdateFromService(this).Wait();
         }
 

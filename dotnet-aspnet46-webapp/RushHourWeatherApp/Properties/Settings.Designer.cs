@@ -31,5 +31,23 @@ namespace WebAppForm.Properties {
                 return ((string)(this["WeatherServiceUrl"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("KILCHICA388")]
+        public string tempStation {
+            get {
+                return ((string)(this["tempStation"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("KILCHICA30")]
+        public string windStation {
+            get {
+                return ((string)(this["windStation"]));
+            }
+        }
     }
 }
