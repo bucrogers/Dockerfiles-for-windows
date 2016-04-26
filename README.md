@@ -12,6 +12,7 @@
 Each of the above is entirely self-contained - all you need is what's in the dockerfile folder:
 * docker build -t sqlexpress ./sqlexpress
   * docker run -d -p 1433:1433 sqlexpress
+  * The sa password (specified in the Dockerfile) is: thepassword2#
 * docker build -t bcwui ./dotnet-aspnet46-webapp
   * docker run -d -e WeatherServiceUrl=http://**pythonRestServiceHost**.eastus.cloudapp.azure.com:5000 -p 80:80 bcwui
 * docker build -t bcwservice ./python-rest-service
