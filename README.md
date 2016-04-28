@@ -15,6 +15,7 @@ Each of the above is entirely self-contained - all you need is what's in the doc
   * The sa password (specified in the Dockerfile) is: thepassword2#
 * docker build -t bcwui ./dotnet-aspnet46-webapp
   * docker run -d -e WeatherServiceUrl=http://**pythonRestServiceHost**.eastus.cloudapp.azure.com:5000 -p 80:80 bcwui
+  * To run this application on Docker Swarm, see [Running a Heterogeneous Linux / Windows Azure-hosted Swarm Cluster](https://github.com/docker/labs/blob/master/windows/dotnet-linux-het/readme.md)
 * docker build -t bcwservice ./python-rest-service
   * docker run -d -e WUNDERGROUND_API_KEY=YourWundergroundApiKey -p 5000:5000 bcwservice
 * docker build -t swarm ./swarm-windows
