@@ -47,8 +47,8 @@ $ azure group create -n "cliEastUsRG" -l "East US"
 _Substitute a unique node name for the "dnsNameForPublicIP" 
 parameter before running the following command in place of
 **uniqueWindowsNodeName**, such as "myname-win-node" (you can also substitute
-for the Azure123 and Azure!23 default admin username and password, respectively)
-- this operation can take up to 20 minutes to complete:_
+for the Azure123 and Azure!23 default admin username and password, respectively) - 
+this operation can take up to 20 minutes to complete:_
 
 <pre>
 $ azure group deployment create cliEastUsRG win-node --template-uri https://raw.githubusercontent.com/brogersyh/Dockerfiles-for-windows/master/dotnet-aspnet46-webapp/azuredeploy.json -p '{"adminUsername": {"value": "Azure123"}, "adminPassword": {"value": "Azure!23"}, "dnsNameForPublicIP": {"value": "<b>uniqueWindowsNodeName</b>"}, "VMName": {"value": "win-node"},"location": {"value": "East US"}}'
