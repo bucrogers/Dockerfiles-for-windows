@@ -20,7 +20,6 @@ Each of the above is entirely self-contained - all you need is what's in the doc
 * docker build -t bcwui ./dotnet-aspnet46-webapp
   * docker run -d -e WeatherServiceUrl=http://**pythonRestServiceHost**.eastus.cloudapp.azure.com:5000 -p 80:80 bcwui
   * navigate to http://**publichostname**/rushhourweatherapp
-  * To run this application on Docker Swarm, see [Running a Heterogeneous Linux / Windows Azure-hosted Swarm Cluster](https://github.com/docker/labs/blob/master/windows/dotnet-linux-het/readme.md)
 * docker build -t bcwservice ./python-rest-service
   * docker run -d -e WUNDERGROUND_API_KEY=YourWundergroundApiKey -p 5000:5000 bcwservice
 * docker build -t swarm ./swarm-windows
@@ -57,12 +56,12 @@ $ azure group deployment create cliEastUsRG win-node --template-uri https://raw.
 Because Azure Marketplace does not currently offer a Container-ready TP5 image,
 you'll need to take the following additional step, which takes about 45min:
 
-Remote Desktop: **uniqueWindowsNodeName**.eastus.cloudapp.azure.com
-Command Prompt (Admin)
+* Remote Desktop: **uniqueWindowsNodeName**.eastus.cloudapp.azure.com
+* Command Prompt (Admin)
 
 <pre>
-PS > powershell.exe -NoProfile -ExecutionPolicy Bypass \install-containerhost
-PS > docker images
+> powershell.exe -NoProfile -ExecutionPolicy Bypass \install-containerhost
+> docker images
 REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
 windowsservercore         10.0.14300.1000     dbfee88ee9fd        5 weeks ago         9.344 GB
 </pre>
