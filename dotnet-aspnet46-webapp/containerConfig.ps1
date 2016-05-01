@@ -1,4 +1,4 @@
-# Configure freshly-provisioned TP4 instance for needs specific to the application
+# Configure freshly-provisioned TP5 instance for needs specific to the application
 #
 # Derived from https://github.com/StefanScherer/docker-windows-azure/blob/master/containerConfig.ps1
 #
@@ -23,8 +23,6 @@ LogWrite "HostName = $($HostName)"
 LogWrite "USERPROFILE = $($env:USERPROFILE)"
 LogWrite "pwd = $($pwd)"
 
-$DockerConfig = 'C:\ProgramData\Docker\runDockerDaemon.cmd'
-
 #Set HTTP, Docker and SSH Firewall Rules:
 
 if (!(Get-NetFirewallRule | where {$_.Name -eq "Http"})) {
@@ -39,6 +37,17 @@ if (!(Get-NetFirewallRule | where {$_.Name -eq "SSH"})) {
     New-NetFirewallRule -Name "SSH" -DisplayName "SSH" -Protocol tcp -LocalPort 22 -Action Allow -Enabled True
 }
 
+#Install Windows Container feature before script below to skip its reboot cycle
+Install-WindowsFeature containers
+
+#Install Windows Container feature, Docker Engine, Base Images
+#use hacked version of Install-ContainerHost.ps1 until it is fixed
+#wget -uri https://aka.ms/tp5/Install-ContainerHost -OutFile c:\Install-ContainerHost.ps1
+wget https://raw.githubusercontent.com/brogersyh/Dockerfiles-for-windows/master/dotnet-aspnet46-webapp/Install-ContainerHost.ps1 -OutFile c:\Install-ContainerHost.ps1
+
+#skip running the script here for now, since reboot cycle required from the containers feature added above - needs to be manually invoked via rdp
+#c:\Install-ContainerHost.ps1
+
 # Install OpenSSH
 # see also https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH
 wget https://github.com/PowerShell/Win32-OpenSSH/releases/download/12_22_2015/OpenSSH-Win64.zip -Out OpenSSH-Win64.zip -UseBasicParsing
@@ -52,26 +61,12 @@ Start-Service sshd
 Set-Service sshd -StartupType Automatic
 Pop-Location
 
-#Modify Docker Daemon Configuration
-if (!($file = Get-Item -Path $DockerConfig)) {
-    Write-Verbose "Docker Daemon Command File Missing" -Verbose
-}
-else {
-    $file = Get-Content $DockerConfig
-    $file = $file -replace '^docker daemon -D -b "Virtual Switch"$','docker daemon -D -b "Virtual Switch" -H 0.0.0.0:2375'
-    Set-Content -Path $DockerConfig -Value $file
-}
-
-#Update Docker Engine to official TP4 to allow pull
-Stop-Service docker
-wget "https://aka.ms/tp4/docker" -outfile C:\windows\system32\docker.exe
-Start-Service Docker
-
 # Install Chocolatey
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+
 # install docker tools
-choco install -y docker-machine -version 0.6.0
-choco install -y docker-compose -version 1.6.0
+choco install -y docker-machine -version 0.7.0
+choco install -y docker-compose -version 1.7.0
 
 .\ConfigureWinRM.ps1 $HostName
 

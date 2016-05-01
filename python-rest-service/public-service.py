@@ -10,6 +10,7 @@ import os
 import datetime
 
 from flask import Flask, jsonify, request, make_response
+from flask.ext.cache import Cache
 from dateutil import parser
 
 httpSuccessCode = 200
@@ -20,8 +21,15 @@ wundergroundHourly = "/hourly/q/"
 wundergroundHistory = "/history/q/"
 wundergroundPwsPrefix = "pws:"
 wundergroundJsonSuffix = ".json"
+wundergroundDefaultApiKey = '8c7c951afe2e2a3d'
 
 app = Flask(__name__)
+
+# define the cache config keys (could be in a settings file to support memcached)
+app.config['CACHE_TYPE'] = 'simple'
+
+# register the cache instance and bind it
+app.cache = Cache(app)
 
 # stubbed test data - for backward compat. with older UI
 amWeatherData = [
@@ -185,11 +193,12 @@ def get_pmRush():
 
 # get commute am / pm weather for today & tomorrow
 @app.route('/commuteWeatherTodayTomorrow', methods=['GET'])
+@app.cache.cached(timeout=30)  # cache this endpoint for 30sec
 def get_commuteWeatherTodayTomorrow():
     try:
-        wundergroundApiKey = os.environ['WUNDERGROUND_API_KEY']
+        wundergroundApiKey = os.environ.get('WUNDERGROUND_API_KEY')
         if (wundergroundApiKey is None or wundergroundApiKey == ''):
-            raise Exception('You must specify a wunderground api key via the WUNDERGROUND_API_KEY environment var')
+            wundergroundApiKey = wundergroundDefaultApiKey
 
         # get params
         windStation = request.args.get('windStation')

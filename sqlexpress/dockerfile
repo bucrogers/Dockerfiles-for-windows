@@ -31,13 +31,14 @@
 #     start.ps1
 
 # .NET 3.5 required for SQL Server
-FROM docker.io/microsoft/dotnet35
+FROM docker.io/microsoft/dotnet35:windowsservercore
 
 # maintainer for image metadata
 MAINTAINER Buc Rogers
 
 #note backslash must be escaped in env var as of TP4
 ENV sqlinstance SQL
+ENV sqlsapassword thepassword2#
 ENV sql c:\\sql
 ENV sqldata c:\\sql\\data
 ENV sqlbackup c:\\sql\\backup
@@ -46,9 +47,6 @@ CMD powershell ./start detached %sqlinstance% %sqldata% %sqlbackup%
 
 # Expose not supported as of Win2016 TP4
 # EXPOSE 1433
-
-# Enable telnet for local troubleshooting
-RUN dism /online /enable-feature /featurename:telnetclient
 
 #designate host-mounted volume for data and backups
 # not yet supported as of TP4 - only cmd line "-v"
@@ -61,30 +59,23 @@ WORKDIR /install
 
 # BEGIN sql-express-download-in-one-step section
 # Download sql express 2014 engine-only installer
-RUN powershell wget http://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/Express%2064BIT/SQLEXPR_x64_ENU.exe \
-  -OutFile sqlexpr_x64_enu.exe
-
 # Note: High-permission System account must be used for SQL Server as of Win 2016 TP4
-RUN /install/sqlexpr_x64_enu.exe /q /x:/install/setup
-# END sql-express-download-in-one-step section
-
 # if verbose install log to console desired, use this:
 # /INDICATEPROGRESS="true"
 # If internet access not present, must disable updates as follows:
 # /UPDATEENABLED=0
-
-RUN /install/setup/setup.exe /q /ACTION=Install /INSTANCENAME=%sqlinstance% /FEATURES=SQLEngine /UPDATEENABLED=1 \
-  /SECURITYMODE=SQL /SAPWD="thepassword2#" /SQLSVCACCOUNT="NT AUTHORITY\System"  /SQLSYSADMINACCOUNTS="BUILTIN\ADMINISTRATORS" \
-  /INSTALLSQLDATADIR=%sqldata% /SQLUSERDBLOGDIR=%sqldata% /SQLBACKUPDIR=%sqlbackup% \
-  /TCPENABLED=1 /NPENABLED=0 /IACCEPTSQLSERVERLICENSETERMS
-
 # if installing SQL EXPRESS - change from default dynamic TCP port to static 1433
-RUN powershell ./Set-SqlExpressStaticTcpPort %sqlinstance%
-
 # reduce image size by removing installer setup files
 # allow docker volume map to data, backup dirs by renaming / deleting them, to allow cmd-line mapping
 # this is due to a TP4 volume-mapping limitation, where container dirs must not exist before being mapped during "docker run"
-RUN powershell ./Move-dirs-and-stop-service %sqlinstance% %sql% %sqldata% %sqlbackup%
-
 # Remove large setup files
-RUN rmdir .\setup /s /q
+RUN powershell wget http://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/Express%2064BIT/SQLEXPR_x64_ENU.exe \
+      -OutFile sqlexpr_x64_enu.exe \
+  && /install/sqlexpr_x64_enu.exe /q /x:/install/setup \
+  && /install/setup/setup.exe /q /ACTION=Install /INSTANCENAME=%sqlinstance% /FEATURES=SQLEngine /UPDATEENABLED=1 \
+      /SECURITYMODE=SQL /SAPWD=sqlsapassword /SQLSVCACCOUNT="NT AUTHORITY\System"  /SQLSYSADMINACCOUNTS="BUILTIN\ADMINISTRATORS" \
+      /INSTALLSQLDATADIR=%sqldata% /SQLUSERDBLOGDIR=%sqldata% /SQLBACKUPDIR=%sqlbackup% \
+      /TCPENABLED=1 /NPENABLED=0 /IACCEPTSQLSERVERLICENSETERMS \
+  && powershell ./Set-SqlExpressStaticTcpPort %sqlinstance% \
+  && powershell ./Move-dirs-and-stop-service %sqlinstance% %sql% %sqldata% %sqlbackup% \
+  && rmdir .\setup /s /q

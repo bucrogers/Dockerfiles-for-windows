@@ -1,7 +1,7 @@
 # build windows swarm executable image
 # adapted from https://stefanscherer.github.io/build-docker-swarm-for-windows-the-docker-way/
 
-FROM windowsservercore:10.0.10586.0
+FROM windowsservercore:10.0.14300.1000
 
 # install chocolatey pkg mgr
 RUN @powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin

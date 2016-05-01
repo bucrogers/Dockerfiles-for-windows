@@ -10,7 +10,7 @@
 # linux Dockerfile implementation:
 #   https://docs.docker.com/engine/examples/postgresql_service/
 
-FROM windowsservercore
+FROM windowsservercore:10.0.14300.1000
 
 # maintainer for image metadata
 MAINTAINER Buc Rogers
@@ -19,7 +19,7 @@ ENV PGDATA c:\\sql
 ENV PGPORT 5432
 #not using PGUSER here due to need to run createuser downstream to create role
 ENV PGUSERVAR postgres
-ENV PGDOWNLOADVER postgresql-9.5.0-1-windows-x64-binaries.zip
+ENV PGDOWNLOADVER postgresql-9.5.2-1-windows-x64-binaries.zip
 
 # download and extract binaries
 RUN powershell wget http://get.enterprisedb.com/postgresql/%PGDOWNLOADVER% \
