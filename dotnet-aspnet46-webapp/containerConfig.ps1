@@ -41,9 +41,9 @@ if (!(Get-NetFirewallRule | where {$_.Name -eq "SSH"})) {
 Install-WindowsFeature containers
 
 #Install Windows Container feature, Docker Engine, Base Images
-#use hacked version of Install-ContainerHost.ps1 until it is fixed
+#use hacked version of Install-ContainerHost.ps1 until it pull request accepted
 #wget -uri https://aka.ms/tp5/Install-ContainerHost -OutFile c:\Install-ContainerHost.ps1
-wget https://raw.githubusercontent.com/brogersyh/Dockerfiles-for-windows/master/dotnet-aspnet46-webapp/Install-ContainerHost.ps1 -OutFile c:\Install-ContainerHost.ps1
+wget https://raw.githubusercontent.com/brogersyh/Virtualization-Documentation/tree/master/windows-server-container-tools/Install-ContainerHost/Install-ContainerHost.ps1 -OutFile c:\Install-ContainerHost.ps1
 
 #skip running the script here for now, since reboot cycle required from the containers feature added above - needs to be manually invoked via rdp
 #c:\Install-ContainerHost.ps1
