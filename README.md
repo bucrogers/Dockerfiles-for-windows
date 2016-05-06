@@ -2,7 +2,7 @@
 
 All have been built and tested under Windows Server 2016 TP5.
 
-* sqlexpress: SQL Server 2014 Express - **not currently working in TP5 due to problem with Msft TP5 dotnet35 base image**
+* sqlexpress: SQL Server 2014 Express
   * See sqlexpress\dockerfile for usage details
   * See also my blog post [Dockerfile to create SQL Server Express windows container image](http://26thcentury.com/2016/01/03/dockerfile-to-create-sql-server-express-windows-container-image/) for a detailed description
 * dotnet-aspnet46-webapp: ASP.NET 4.6 Web UI app ("bcw" Bike Commuter Weather app), running under IIS - built in the Dockerfile using msbuild

@@ -14,7 +14,7 @@
 #   interactive, data on host:
 #     docker run -it -p <hostport>:1433 -v <hostsqldir>:c:\sql <imagename> "powershell ./start"
 #
-#   example: build image then run, teardown two SxX multiple sql server containers with 
+#   example: build image then run, teardown two SxX multiple sql server containers with
 #   persistent data volumes on host (detached)
 #     docker build -t sqlexpress .
 #     docker run --name sql -d -p 1433:1433 -v c:\sql:c:\sql  sqlexpress
@@ -71,7 +71,7 @@ RUN powershell wget http://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4
       -OutFile sqlexpr_x64_enu.exe \
   && /install/sqlexpr_x64_enu.exe /q /x:/install/setup \
   && /install/setup/setup.exe /q /ACTION=Install /INSTANCENAME=%sqlinstance% /FEATURES=SQLEngine /UPDATEENABLED=1 \
-      /SECURITYMODE=SQL /SAPWD=sqlsapassword /SQLSVCACCOUNT="NT AUTHORITY\System"  /SQLSYSADMINACCOUNTS="BUILTIN\ADMINISTRATORS" \
+      /SECURITYMODE=SQL /SAPWD=%sqlsapassword% /SQLSVCACCOUNT="NT AUTHORITY\System"  /SQLSYSADMINACCOUNTS="BUILTIN\ADMINISTRATORS" \
       /INSTALLSQLDATADIR=%sqldata% /SQLUSERDBLOGDIR=%sqldata% /SQLBACKUPDIR=%sqlbackup% \
       /TCPENABLED=1 /NPENABLED=0 /IACCEPTSQLSERVERLICENSETERMS \
   && powershell ./Set-SqlExpressStaticTcpPort %sqlinstance% \
