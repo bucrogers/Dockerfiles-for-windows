@@ -43,8 +43,6 @@ ENV sql c:\\sql
 ENV sqldata c:\\sql\\data
 ENV sqlbackup c:\\sql\\backup
 
-CMD powershell ./start detached %sqlinstance% %sqldata% %sqlbackup%
-
 # Expose not supported as of Win2016 TP4
 # EXPOSE 1433
 
@@ -78,4 +76,7 @@ RUN powershell wget http://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4
       /TCPENABLED=1 /NPENABLED=0 /IACCEPTSQLSERVERLICENSETERMS \
   && powershell ./Set-SqlExpressStaticTcpPort %sqlinstance% \
   && powershell ./Move-dirs-and-stop-service %sqlinstance% %sql% %sqldata% %sqlbackup% \
+  && del sqlexpr_x64_enu.exe \
   && rmdir .\setup /s /q
+
+CMD powershell ./start detached %sqlinstance% %sqldata% %sqlbackup%
