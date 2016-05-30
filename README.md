@@ -7,6 +7,7 @@ All have been built and tested under Windows Server 2016 TP5.
   * See also my blog post [Dockerfile to create SQL Server Express windows container image](http://26thcentury.com/2016/01/03/dockerfile-to-create-sql-server-express-windows-container-image/) for a detailed description
 * dotnet-aspnet46-webapp: ASP.NET 4.6 Web UI app ("bcw" Bike Commuter Weather app), running under IIS - built in the Dockerfile using msbuild
   * There is a docker-compose.yml file in dotnet-aspnet46-webapp, to run both ui and service locally - however, docker-compose network mode functionality is limited as of TP5: The app will be accessible from outside only if run via docker run, not docker-compose
+  * A live version of this web app, hosted by Docker Windows Containers on Azure, is available at: [Bike Commuter Weather](http://bcw.eastus.cloudapp.azure.com/rushhourweatherapp/)
 * python-rest-service: Python REST web service consumed by the "bcw" UI above (may instead be run under Linux, via Linux Dockerfile at [Dockerfiles for Linux](https://github.com/brogersyh/Dockerfiles-for-Linux))
 * swarm-windows: Docker Swarm executable for Windows
 * postgresql: PostgreSQL 9.5
