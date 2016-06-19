@@ -1,6 +1,6 @@
 # Dockerfiles for Windows
 
-All have been built and tested under Windows Server 2016 TP5.
+All have been built and tested under Windows Server 2016 TP5. Built Images for all of the below available at [DockerHub/brogersyh](https://hub.docker.com/r/brogersyh/)
 
 * sqlexpress: SQL Server 2014 Express
   * See sqlexpress\dockerfile for usage details
