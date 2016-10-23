@@ -31,7 +31,7 @@
 #     start.ps1
 
 # .NET 3.5 required for SQL Server
-FROM docker.io/microsoft/dotnet35:windowsservercore
+FROM microsoft/dotnet-framework:3.5
 
 # maintainer for image metadata
 MAINTAINER Buc Rogers
@@ -49,7 +49,9 @@ ENV sqlbackup c:\\sql\\backup
 #designate host-mounted volume for data and backups
 # not yet supported as of TP4 - only cmd line "-v"
 # VOLUME ["%sql%"]
-
+RUN mkdir c:\\sql
+RUN mkdir c:\\sql\\data
+RUN mkdir c:\\sql\\backup
 # make install files accessible
 COPY . /install
 
@@ -74,8 +76,8 @@ RUN powershell wget http://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4
       /SECURITYMODE=SQL /SAPWD=%sqlsapassword% /SQLSVCACCOUNT="NT AUTHORITY\System"  /SQLSYSADMINACCOUNTS="BUILTIN\ADMINISTRATORS" \
       /INSTALLSQLDATADIR=%sqldata% /SQLUSERDBLOGDIR=%sqldata% /SQLBACKUPDIR=%sqlbackup% \
       /TCPENABLED=1 /NPENABLED=0 /IACCEPTSQLSERVERLICENSETERMS \
-  && powershell ./Set-SqlExpressStaticTcpPort %sqlinstance% \
-  && powershell ./Move-dirs-and-stop-service %sqlinstance% %sql% %sqldata% %sqlbackup% \
+  #&& powershell ./Set-SqlExpressStaticTcpPort %sqlinstance% \
+  && powershell ./Move-dirs-and-stop-service %sqlinstance% %sql% %sqldata% %sqlbackup% #\
   && del sqlexpr_x64_enu.exe \
   && rmdir .\setup /s /q
 
