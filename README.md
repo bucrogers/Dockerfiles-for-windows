@@ -1,6 +1,6 @@
 # Dockerfiles for Windows
 
-All have been built and tested under Windows Server 2016 TP5. Built Images for all of the below available at [DockerHub/brogersyh](https://hub.docker.com/r/brogersyh/)
+All have been built and tested under Windows Server 2016 TP5. 
 
 * sqlexpress: SQL Server 2014 Express
   * See sqlexpress\dockerfile for usage details
@@ -8,7 +8,7 @@ All have been built and tested under Windows Server 2016 TP5. Built Images for a
 * dotnet-aspnet46-webapp: ASP.NET 4.6 Web UI app ("bcw" Bike Commuter Weather app), running under IIS - built in the Dockerfile using msbuild
   * There is a docker-compose.yml file in dotnet-aspnet46-webapp, to run both ui and service locally - however, docker-compose network mode functionality is limited as of TP5: The app will be accessible from outside only if run via docker run, not docker-compose
   * A live version of this web app, hosted by Docker Windows Containers on Azure, is available at: [Bike Commuter Weather](http://bcw.eastus.cloudapp.azure.com/rushhourweatherapp/)
-* python-rest-service: Python REST web service consumed by the "bcw" UI above (may instead be run under Linux, via Linux Dockerfile at [Dockerfiles for Linux](https://github.com/brogersyh/Dockerfiles-for-Linux))
+* python-rest-service: Python REST web service consumed by the "bcw" UI above (may instead be run under Linux, via Linux Dockerfile at [Dockerfiles for Linux](https://github.com/bucrogers/Dockerfiles-for-Linux))
 * swarm-windows: Docker Swarm executable for Windows
 * postgresql: PostgreSQL 9.5
 * ruby-sinatra-helloworld: simple "hello world" ruby sinatra web app
@@ -51,7 +51,7 @@ for the Azure123 and Azure!23 default admin username and password, respectively)
 this operation can take up to 20 minutes to complete:_
 
 <pre>
-$ azure group deployment create cliEastUsRG win-node --template-uri https://raw.githubusercontent.com/brogersyh/Dockerfiles-for-windows/master/dotnet-aspnet46-webapp/azuredeploy.json -p '{"adminUsername": {"value": "Azure123"}, "adminPassword": {"value": "Azure!23"}, "dnsNameForPublicIP": {"value": "<b>uniqueWindowsNodeName</b>"}, "VMName": {"value": "win-node"},"location": {"value": "East US"}}'
+$ azure group deployment create cliEastUsRG win-node --template-uri https://raw.githubusercontent.com/bucrogers/Dockerfiles-for-windows/master/dotnet-aspnet46-webapp/azuredeploy.json -p '{"adminUsername": {"value": "Azure123"}, "adminPassword": {"value": "Azure!23"}, "dnsNameForPublicIP": {"value": "<b>uniqueWindowsNodeName</b>"}, "VMName": {"value": "win-node"},"location": {"value": "East US"}}'
 </pre>
 
 Because Azure Marketplace does not currently offer a Container-ready TP5 image,
